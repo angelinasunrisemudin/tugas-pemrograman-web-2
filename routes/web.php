@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\NovelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/novels');
 });
+
+Route::resource('novels', NovelController::class);
