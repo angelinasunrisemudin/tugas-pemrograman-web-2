@@ -86,8 +86,12 @@ class NovelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Novel $novel)
     {
-        //
+        // Menghapus data dari database
+    $novel->delete();
+
+    // Kembali ke halaman index dengan pesan sukses
+    return redirect()->route('novels.index')->with('success', 'Data novel berhasil dihapus!');
     }
 }
