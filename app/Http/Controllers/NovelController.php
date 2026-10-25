@@ -56,17 +56,31 @@ class NovelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Novel $novel)
     {
-        //
+       return view('novels.edit', compact('novel'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Novel $novel)
     {
-        //
+        // Memvalidasi data agar tidak ada yang dikosongkan saat diedit
+    $request->validate([
+        'title' => 'required',
+        'author' => 'required',
+        'publisher' => 'required',
+        'publication_year' => 'required|integer',
+        'genre' => 'required',
+        'reading_status' => 'required',
+    ]);
+
+    // Menyimpan perubahan ke database
+    $novel->update($request->all());
+
+    // Kembali ke halaman index dengan pesan sukses
+    return redirect()->route('novels.index')->with('success', 'Data novel berhasil diubah!');
     }
 
     /**
