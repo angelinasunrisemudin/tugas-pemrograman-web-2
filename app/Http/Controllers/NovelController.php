@@ -20,7 +20,7 @@ class NovelController extends Controller
      */
     public function create()
     {
-        //
+        return view('novels.create');
     }
 
     /**
@@ -28,7 +28,21 @@ class NovelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Memvalidasi data yang dikirim tidak boleh kosong
+    $request->validate([
+        'title' => 'required',
+        'author' => 'required',
+        'publisher' => 'required',
+        'publication_year' => 'required|integer',
+        'genre' => 'required',
+        'reading_status' => 'required',
+    ]);
+
+    // Menyimpan ke database
+    Novel::create($request->all());
+
+    // Kembali ke halaman index dengan pesan sukses
+    return redirect()->route('novels.index')->with('success', 'Data novel berhasil ditambahkan!');
     }
 
     /**
