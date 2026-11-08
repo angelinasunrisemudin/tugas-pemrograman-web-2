@@ -11,8 +11,10 @@ class NovelController extends Controller
      */
     public function index()
     {
-        $novels = Novel::all();
-        return view('novels.index', compact('novels'));
+        return view('novels.index', [
+            'title'  => 'Daftar Novel',
+            'novels' => Novel::latest()->get(),
+        ]);
     }
 
     /**
@@ -28,21 +30,21 @@ class NovelController extends Controller
      */
     public function store(Request $request)
     {
-        // Memvalidasi data yang dikirim tidak boleh kosong
-    $request->validate([
-        'title' => 'required',
-        'author' => 'required',
-        'publisher' => 'required',
-        'publication_year' => 'required|integer',
-        'genre' => 'required',
-        'reading_status' => 'required',
-    ]);
+        // Memvalidasi data dengan nama kolom yang sesuai (Bahasa Indonesia)
+        $request->validate([
+            'judul'        => 'required',
+            'penulis'      => 'required',
+            'penerbit'     => 'required',
+            'tahun_terbit' => 'required|integer',
+            'genre'        => 'required',
+            'status'       => 'required',
+        ]);
 
-    // Menyimpan ke database
-    Novel::create($request->all());
+        // Menyimpan ke database
+        Novel::create($request->all());
 
-    // Kembali ke halaman index dengan pesan sukses
-    return redirect()->route('novels.index')->with('success', 'Data novel berhasil ditambahkan!');
+        // Kembali ke halaman index dengan pesan sukses
+        return redirect()->route('novels.index')->with('success', 'Data novel berhasil ditambahkan!');
     }
 
     /**
@@ -58,7 +60,7 @@ class NovelController extends Controller
      */
     public function edit(Novel $novel)
     {
-       return view('novels.edit', compact('novel'));
+        return view('novels.edit', compact('novel'));
     }
 
     /**
@@ -66,21 +68,21 @@ class NovelController extends Controller
      */
     public function update(Request $request, Novel $novel)
     {
-        // Memvalidasi data agar tidak ada yang dikosongkan saat diedit
-    $request->validate([
-        'title' => 'required',
-        'author' => 'required',
-        'publisher' => 'required',
-        'publication_year' => 'required|integer',
-        'genre' => 'required',
-        'reading_status' => 'required',
-    ]);
+        // Memvalidasi data dengan nama kolom yang sesuai (Bahasa Indonesia)
+        $request->validate([
+            'judul'        => 'required',
+            'penulis'      => 'required',
+            'penerbit'     => 'required',
+            'tahun_terbit' => 'required|integer',
+            'genre'        => 'required',
+            'status'       => 'required',
+        ]);
 
-    // Menyimpan perubahan ke database
-    $novel->update($request->all());
+        // Menyimpan perubahan ke database
+        $novel->update($request->all());
 
-    // Kembali ke halaman index dengan pesan sukses
-    return redirect()->route('novels.index')->with('success', 'Data novel berhasil diubah!');
+        // Kembali ke halaman index dengan pesan sukses
+        return redirect()->route('novels.index')->with('success', 'Data novel berhasil diubah!');
     }
 
     /**
@@ -89,9 +91,9 @@ class NovelController extends Controller
     public function destroy(Novel $novel)
     {
         // Menghapus data dari database
-    $novel->delete();
+        $novel->delete();
 
-    // Kembali ke halaman index dengan pesan sukses
-    return redirect()->route('novels.index')->with('success', 'Data novel berhasil dihapus!');
+        // Kembali ke halaman index dengan pesan sukses
+        return redirect()->route('novels.index')->with('success', 'Data novel berhasil dihapus!');
     }
 }

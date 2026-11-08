@@ -12,32 +12,41 @@
 
                 <div class="mb-3">
                     <label>Judul Novel</label>
-                    <input type="text" name="title" value="{{ $novel->title }}" class="form-control" required>
+                    <input type="text" name="judul" class="form-control" value="{{ old('judul', $novel->judul) }}"
+                        required>
                 </div>
+
                 <div class="mb-3">
                     <label>Penulis</label>
-                    <input type="text" name="author" value="{{ $novel->author }}" class="form-control" required>
+                    <input type="text" name="penulis" class="form-control" value="{{ old('penulis', $novel->penulis) }}"
+                        required>
                 </div>
+
                 <div class="mb-3">
                     <label>Penerbit</label>
-                    <input type="text" name="publisher" value="{{ $novel->publisher }}" class="form-control" required>
+                    <input type="text" name="penerbit" class="form-control"
+                        value="{{ old('penerbit', $novel->penerbit) }}" required>
                 </div>
+
                 <div class="mb-3">
                     <label>Tahun Terbit</label>
-                    <input type="number" name="publication_year" value="{{ $novel->publication_year }}"
-                        class="form-control" required>
+                    <input type="number" name="tahun_terbit" class="form-control"
+                        value="{{ old('tahun_terbit', $novel->tahun_terbit) }}" required>
                 </div>
+
                 <div class="mb-3">
                     <label>Genre</label>
-                    <input type="text" name="genre" value="{{ $novel->genre }}" class="form-control" required>
+                    <input type="text" name="genre" class="form-control" value="{{ old('genre', $novel->genre) }}"
+                        required>
                 </div>
+
                 <div class="mb-3">
                     <label>Status Baca</label>
-                    <select name="reading_status" class="form-control" required>
-                        <option value="Belum Selesai" {{ $novel->reading_status == 'Belum Selesai' ? 'selected' : '' }}>
-                            Belum Selesai</option>
-                        <option value="Selesai Dibaca" {{ $novel->reading_status == 'Selesai Dibaca' ? 'selected' : '' }}>
-                            Selesai Dibaca</option>
+                    <select name="status" class="form-control" required>
+                        <option value="Sudah Dibaca"
+                            {{ old('status', $novel->status) == 'Sudah Dibaca' ? 'selected' : '' }}>Sudah Dibaca</option>
+                        <option value="Belum Dibaca"
+                            {{ old('status', $novel->status) == 'Belum Dibaca' ? 'selected' : '' }}>Belum Dibaca</option>
                     </select>
                 </div>
 

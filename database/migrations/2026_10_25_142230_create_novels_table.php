@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('novels', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('author');
-            $table->string('publisher');
-            $table->integer('publication_year');
-            $table->string('genre');
-            $table->string('reading_status');
-            $table->timestamps();
+       Schema::create('novels', function (Blueprint $table) {
+    $table->id();
+    $table->string('judul');
+    $table->string('penulis');
+    $table->string('penerbit');
+    $table->string('tahun_terbit');
+    $table->string('genre');
+    $table->string('status');
+    $table->timestamps();
         });
     }
 

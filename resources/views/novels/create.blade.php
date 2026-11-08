@@ -10,30 +10,33 @@
                 @csrf
                 <div class="mb-3">
                     <label>Judul Novel</label>
-                    <input type="text" name="title" class="form-control" required>
+                    <input type="text" name="judul" class="form-control" value="{{ old('judul') }}" required>
                 </div>
                 <div class="mb-3">
                     <label>Penulis</label>
-                    <input type="text" name="author" class="form-control" required>
+                    <input type="text" name="penulis" class="form-control" value="{{ old('penulis') }}" required>
                 </div>
                 <div class="mb-3">
                     <label>Penerbit</label>
-                    <input type="text" name="publisher" class="form-control" required>
+                    <input type="text" name="penerbit" class="form-control" value="{{ old('penerbit') }}" required>
                 </div>
                 <div class="mb-3">
                     <label>Tahun Terbit</label>
-                    <input type="number" name="publication_year" class="form-control" required>
+                    <input type="number" name="tahun_terbit" class="form-control" value="{{ old('tahun_terbit') }}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label>Genre</label>
-                    <input type="text" name="genre" class="form-control" required>
+                    <input type="text" name="genre" class="form-control" value="{{ old('genre') }}" required>
                 </div>
                 <div class="mb-3">
                     <label>Status Baca</label>
-                    <select name="reading_status" class="form-control" required>
+                    <select name="status" class="form-control" required>
                         <option value="">-- Pilih Status --</option>
-                        <option value="Belum Selesai">Belum Selesai</option>
-                        <option value="Selesai Dibaca">Selesai Dibaca</option>
+                        <option value="Belum Dibaca" {{ old('status') == 'Belum Dibaca' ? 'selected' : '' }}>Belum Dibaca
+                        </option>
+                        <option value="Sudah Dibaca" {{ old('status') == 'Sudah Dibaca' ? 'selected' : '' }}>Sudah Dibaca
+                        </option>
                     </select>
                 </div>
 

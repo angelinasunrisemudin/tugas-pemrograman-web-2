@@ -17,7 +17,7 @@
 
     <div class="card shadow-sm">
         <div class="card-body">
-            <table class="table table-bordered table-striped text-center mb-0">
+            <table class="table table-bordered table-striped table-hover text-center mb-0">
                 <thead class="table-dark">
                     <tr>
                         <th>No</th>
@@ -31,35 +31,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($novels as $novel)
+                    @foreach ($novels as $novel)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $novel->title }}</td>
-                            <td>{{ $novel->author }}</td>
-                            <td>{{ $novel->publisher }}</td>
-                            <td>{{ $novel->publication_year }}</td>
+                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $novel->judul }}</td>
+                            <td>{{ $novel->penulis }}</td>
+                            <td>{{ $novel->penerbit }}</td>
+                            <td>{{ $novel->tahun_terbit }}</td>
                             <td>{{ $novel->genre }}</td>
+
+                            <!-- PERUBAHAN WARNA STATUS DIMULAI DI SINI -->
                             <td>
-                                <span
-                                    class="badge {{ $novel->reading_status == 'Selesai Dibaca' ? 'bg-success' : 'bg-warning' }}">
-                                    {{ $novel->reading_status }}
-                                </span>
+                                @if ($novel->status == 'Sudah Dibaca')
+                                    <span class="badge bg-success">{{ $novel->status }}</span>
+                                @else
+                                    <span class="badge bg-secondary">{{ $novel->status }}</span>
+                                @endif
                             </td>
+                            <!-- PERUBAHAN WARNA STATUS SELESAI -->
+
                             <td>
-                                <a href="{{ route('novels.edit', $novel->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('novels.destroy', $novel->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
-                                </form>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('novels.edit', $novel) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('novels.destroy', $novel) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Apakah Anda yakin?')">Hapus</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center text-muted">Belum ada data novel.</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>
