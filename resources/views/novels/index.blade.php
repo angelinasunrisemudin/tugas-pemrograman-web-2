@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- KODE NOTIFIKASI MULAI -->
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <!-- KODE NOTIFIKASI SELESAI -->
+
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Daftar Novel</h3>
-        <!-- Tombol tambah akan berfungsi di tahap selanjutnya -->
+
         <a href="{{ route('novels.create') }}" class="btn btn-primary">Tambah Data</a>
     </div>
 
