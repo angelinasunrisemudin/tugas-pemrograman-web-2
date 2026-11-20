@@ -54,12 +54,18 @@ class AuthorController extends Controller
         return redirect()->route('authors.index')
             ->with('success', 'Data penulis berhasil diperbarui.');
     }
-    
+
     public function destroy(Author $author): RedirectResponse
     {
         $author->delete();
 
         return redirect()->route('authors.index')
             ->with('success', 'Data penulis berhasil dihapus.');
+    }
+    public function show(Author $author): View
+    {
+        $author->load('books');
+
+        return view('authors.show', compact('author'));
     }
 }

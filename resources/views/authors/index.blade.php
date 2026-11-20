@@ -37,6 +37,8 @@
                                 <td class="text-start">{{ $author->biografi }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('authors.show', $author) }}"
+                                            class="btn btn-sm btn-info">Detail</a>
                                         <a href="{{ route('authors.edit', $author) }}"
                                             class="btn btn-sm btn-warning">Edit</a>
                                         <form action="{{ route('authors.destroy', $author) }}" method="POST"
