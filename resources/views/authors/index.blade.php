@@ -10,6 +10,8 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Daftar Penulis (Author)</h3>
+        <a href="{{ route('authors.create') }}" class="btn btn-primary">Tambah Data</a>
+    </div>
     </div>
 
     <div class="card shadow-sm">

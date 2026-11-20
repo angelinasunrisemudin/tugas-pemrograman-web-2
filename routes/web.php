@@ -16,3 +16,6 @@ Route::get('/novels/{novel}/edit', [NovelController::class, 'edit'])->name('nove
 Route::put('/novels/{novel}', [NovelController::class, 'update'])->name('novels.update');
 Route::delete('/novels/{novel}', [NovelController::class, 'destroy'])->name('novels.destroy');
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
+Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
+Route::get('/authors/create', [AuthorController::class, 'create'])->name('authors.create');
+Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
