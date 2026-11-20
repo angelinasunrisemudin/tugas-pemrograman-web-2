@@ -26,6 +26,7 @@
                             <th>Tahun Terbit</th>
                             <th>Jumlah Halaman</th>
                             <th>Harga</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,10 +39,15 @@
                                 <td>{{ $book->tahun_terbit }}</td>
                                 <td>{{ $book->jumlah_halaman }}</td>
                                 <td>Rp {{ number_format($book->harga, 0, ',', '.') }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    </div>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">Belum ada data buku.</td>
+                                <td colspan="8" class="text-center">Belum ada data buku.</td>
                             </tr>
                         @endforelse
                     </tbody>
