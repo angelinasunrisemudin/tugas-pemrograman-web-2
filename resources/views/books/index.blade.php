@@ -42,6 +42,12 @@
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form action="{{ route('books.destroy', $book) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data buku ini?')">Hapus</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

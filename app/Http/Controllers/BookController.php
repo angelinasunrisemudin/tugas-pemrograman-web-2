@@ -96,4 +96,12 @@ class BookController extends Controller
         return redirect()->route('books.index')
             ->with('success', 'Data buku berhasil diperbarui.');
     }
+
+    public function destroy(Book $book): RedirectResponse
+    {
+        $book->delete();
+
+        return redirect()->route('books.index')
+            ->with('success', 'Data buku berhasil dihapus.');
+    }
 }
