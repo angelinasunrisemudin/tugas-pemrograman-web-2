@@ -57,6 +57,13 @@ class BookController extends Controller
             ->with('success', 'Data buku berhasil ditambahkan.');
     }
 
+    public function show(Book $book): View
+    {
+        $book->load('author');
+
+        return view('books.show', compact('book'));
+    }
+
     public function edit(Book $book): View
     {
         $authors = Author::orderBy('nama')->get();

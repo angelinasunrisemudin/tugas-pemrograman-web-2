@@ -41,6 +41,7 @@
                                 <td>Rp {{ number_format($book->harga, 0, ',', '.') }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('books.show', $book) }}" class="btn btn-sm btn-info">Detail</a>
                                         <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Edit</a>
                                         <form action="{{ route('books.destroy', $book) }}" method="POST" class="d-inline">
                                             @csrf
