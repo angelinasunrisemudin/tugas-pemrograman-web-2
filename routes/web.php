@@ -21,3 +21,4 @@ Route::get('/authors/create', [AuthorController::class, 'create'])->name('author
 Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
 Route::get('/authors/{author}/edit', [AuthorController::class, 'edit'])->name('authors.edit');
 Route::put('/authors/{author}', [AuthorController::class, 'update'])->name('authors.update');
+Route::delete('/authors/{author}', [AuthorController::class, 'destroy'])->name('authors.destroy');
