@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\NovelController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return redirect('/novels');
@@ -13,3 +15,4 @@ Route::post('/novels', [NovelController::class, 'store'])->name('novels.store');
 Route::get('/novels/{novel}/edit', [NovelController::class, 'edit'])->name('novels.edit');
 Route::put('/novels/{novel}', [NovelController::class, 'update'])->name('novels.update');
 Route::delete('/novels/{novel}', [NovelController::class, 'destroy'])->name('novels.destroy');
+Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
