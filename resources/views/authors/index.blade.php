@@ -16,7 +16,8 @@
     <div class="card shadow-sm">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover text-center align-middle mb-0">
+                <table id="authors-table"
+                    class="table table-bordered table-striped table-hover text-center align-middle mb-0">
                     <thead class="table-dark">
                         <tr>
                             <th>No</th>
@@ -28,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($authors as $author)
+                        @foreach ($authors as $author)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $author->nama }}</td>
@@ -51,14 +52,27 @@
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="text-center">Belum ada data penulis.</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#authors-table').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/id.json'
+                },
+                columnDefs: [{
+                    orderable: false,
+                    searchable: false,
+                    targets: -1
+                }]
+            });
+        });
+    </script>
+@endpush
