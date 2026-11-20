@@ -19,3 +19,5 @@ Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index'
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::get('/authors/create', [AuthorController::class, 'create'])->name('authors.create');
 Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
+Route::get('/authors/{author}/edit', [AuthorController::class, 'edit'])->name('authors.edit');
+Route::put('/authors/{author}', [AuthorController::class, 'update'])->name('authors.update');

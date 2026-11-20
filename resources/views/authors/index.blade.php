@@ -25,6 +25,7 @@
                             <th>Email</th>
                             <th>Negara Asal</th>
                             <th>Biografi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,10 +36,16 @@
                                 <td>{{ $author->email }}</td>
                                 <td>{{ $author->negara_asal }}</td>
                                 <td class="text-start">{{ $author->biografi }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('authors.edit', $author) }}"
+                                            class="btn btn-sm btn-warning">Edit</a>
+                                    </div>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Belum ada data penulis.</td>
+                                <td colspan="6" class="text-center">Belum ada data penulis.</td>
                             </tr>
                         @endforelse
                     </tbody>

@@ -35,4 +35,23 @@ class AuthorController extends Controller
         return redirect()->route('authors.index')
             ->with('success', 'Data penulis berhasil ditambahkan.');
     }
+    public function edit(Author $author): View
+    {
+        return view('authors.edit', compact('author'));
+    }
+
+    public function update(Request $request, Author $author): RedirectResponse
+    {
+        $validated = $request->validate([
+            'nama'        => ['required', 'string', 'max:255'],
+            'email'       => ['required', 'email', 'max:255'],
+            'negara_asal' => ['required', 'string', 'max:255'],
+            'biografi'    => ['nullable', 'string'],
+        ]);
+
+        $author->update($validated);
+
+        return redirect()->route('authors.index')
+            ->with('success', 'Data penulis berhasil diperbarui.');
+    }
 }
