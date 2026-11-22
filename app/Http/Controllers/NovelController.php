@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Novel;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class NovelController extends Controller
 {
@@ -50,9 +51,9 @@ class NovelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+   public function show(Novel $novel): View
     {
-        //
+        return view('novels.show', compact('novel'));
     }
 
     /**

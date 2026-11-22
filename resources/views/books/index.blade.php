@@ -16,8 +16,7 @@
     <div class="card shadow-sm">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="books-table"
-                    class="table table-bordered table-striped table-hover text-center align-middle mb-0">
+                <table id="books-table" class="table table-bordered table-striped table-hover text-center align-middle mb-0">
                     <thead class="table-dark">
                         <tr>
                             <th>No</th>
@@ -26,8 +25,8 @@
                             <th>ISBN</th>
                             <th>Tahun Terbit</th>
                             <th>Jumlah Halaman</th>
-                            <th>Harga</th>
-                            <th>Aksi</th>
+                            <th class="text-nowrap">Harga</th>
+                            <th class="text-nowrap">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,11 +35,11 @@
                                 <th>{{ $loop->iteration }}</th>
                                 <td class="text-start">{{ $book->judul }}</td>
                                 <td>{{ $book->author?->nama ?? '-' }}</td>
-                                <td>{{ $book->isbn }}</td>
+                                <td class="text-nowrap">{{ $book->isbn }}</td>
                                 <td>{{ $book->tahun_terbit }}</td>
                                 <td>{{ $book->jumlah_halaman }}</td>
-                                <td>Rp {{ number_format($book->harga, 0, ',', '.') }}</td>
-                                <td>
+                                <td class="text-end text-nowrap">Rp {{ number_format($book->harga, 0, ',', '.') }}</td>
+                                <td class="text-nowrap">
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('books.show', $book) }}" class="btn btn-sm btn-info">Detail</a>
                                         <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Edit</a>
@@ -68,11 +67,9 @@
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/id.json'
                 },
-                columnDefs: [{
-                    orderable: false,
-                    searchable: false,
-                    targets: -1
-                }]
+                columnDefs: [
+                    { orderable: false, searchable: false, targets: -1 }
+                ]
             });
         });
     </script>

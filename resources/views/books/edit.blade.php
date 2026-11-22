@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label for="isbn" class="form-label">ISBN</label>
-                    <input type="text" id="isbn" name="isbn" class="form-control"
+                    <input type="number" id="isbn" name="isbn" class="form-control"
                         value="{{ old('isbn', $book->isbn) }}" required>
                 </div>
 

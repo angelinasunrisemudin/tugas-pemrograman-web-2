@@ -52,7 +52,8 @@
                                 <!-- PERUBAHAN WARNA STATUS SELESAI -->
 
                                 <td>
-                                    <div class="d-flex gap-2">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('novels.show', $novel) }}" class="btn btn-sm btn-info">Detail</a>
                                         <a href="{{ route('novels.edit', $novel) }}"
                                             class="btn btn-sm btn-warning">Edit</a>
                                         <form action="{{ route('novels.destroy', $novel) }}" method="POST"

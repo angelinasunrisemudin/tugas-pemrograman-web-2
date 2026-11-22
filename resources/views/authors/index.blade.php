@@ -10,7 +10,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Daftar Penulis (Author)</h3>
-        <a href="{{ route('authors.create') }}" class="btn btn-primary">Tambah Data</a>
+        <a href="{{ route('authors.create') }}" class="btn btn-primary text-nowrap">Tambah Data</a>
     </div>
 
     <div class="card shadow-sm">
@@ -23,9 +23,9 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Negara Asal</th>
+                            <th class="text-nowrap">Negara Asal</th>
                             <th>Biografi</th>
-                            <th>Aksi</th>
+                            <th class="text-nowrap">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,9 +34,9 @@
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $author->nama }}</td>
                                 <td>{{ $author->email }}</td>
-                                <td>{{ $author->negara_asal }}</td>
+                                <td class="text-nowrap">{{ $author->negara_asal }}</td>
                                 <td class="text-start">{{ $author->biografi }}</td>
-                                <td>
+                                <td class="text-nowrap">
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('authors.show', $author) }}"
                                             class="btn btn-sm btn-info">Detail</a>
